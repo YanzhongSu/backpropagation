@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  p
+   
+  p
+  div.container
+   div.content
+    table(class="table table-striped")
+     thead
+       tr 
+             th Input1
+             th Input2
+             th Target Output 1
+             th Target Output 2
+     tbody
+       tr
+           td #{title['i1']}
+           td #{title['i2']}
+           td #{title1['o1']}
+           td #{title1['o2']}
+  
+  div.container
+    div.content
+      h1(class="text-center") Results
+      table(class="table table-striped")
+        thead
+          tr 
+                th Round No.
+                th Output 1
+                th Output 2
+        tbody
+            each item in data
+                tr
+                    td #{item['i']}
+                    td #{item['output']['o1']}
+                    td #{item['output']['o2']}
+    div.footer
+    div(id='viz')
+    
+block sidebar
+  h1(class="text-center") Diagram 
+  img.center-block(src= "images/pic.png")
+
+
+    
+
+
+
+

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  //- passed into layout.jade when form.jade is rendered
+  block content
+    form(class="form-group" method="post" action="/create")
+      p
+      label(for="comment") Input 1
+      input(class="form-control" type="text", name="input1", value=0.05)
+      p
+      label(for="comment") Input 2
+      input(class="form-control" type="text", name="input2", value=0.10)
+      p
+      label(for="comment") Output 1
+      input(class="form-control" type="text", name="output1", value=0.01)
+      p
+      label(for="comment") Output 2
+      input(class="form-control" type="text", name="output2", value=0.99)
+      p
+
+      input(class="btn btn-default" type="submit", value="Run")
+
+
+

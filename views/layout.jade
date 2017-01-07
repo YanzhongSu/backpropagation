@@ -1,7 +1,24 @@
 doctype html
+
 html
   head
     title= title
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js') 
+    script(src="http://d3js.org/d3.v3.min.js")
+    link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
+
   body
-    block content
+    header
+        h1(class="text-center") Back Propogation Demo
+    .container
+        .main-content
+            block content
+        .sidebar
+            block sidebar
+    footer
+      p Topics in Computer Science Final Presentation 2017
+
