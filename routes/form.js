@@ -24,6 +24,7 @@ router.post('/', function(req, res) {
 	var output = {"o1": 0.01, "o2": 0.99}
 	var weight_origin = {"w1": 0.15, "w2": 0.2, "w3": 0.25, "w4": 0.30, "w5": 0.40, "w6": 0.45, "w7": 0.50, "w8": 0.55,}
 	var i = 0
+	var round = req.body.round;
 	input['i1'] = req.body.input1;
 	input['i2'] = req.body.input2;
 	output['o1'] = req.body.output1;
@@ -34,18 +35,28 @@ router.post('/', function(req, res) {
 
 	console.log('output2 is: ', req.body.output2);
 	console.log('output1 is: ', req.body.output1);
+	console.log('round is: ', req.body.round);
+
 	var tempdata1 = [];
 	var weight = weight_origin;
+	var x = 0;
+	if (round > 10){
+		x = parseInt(round/10);
+		console.log(x);
+	}else{
+		x = 1;
+	}
 
-	for (i = 0; i < 20001; i++) {
-
+	for (i = 0; i < round; i++) {
+		// console.log(round);
+		// console.log(i);
 		// var result2 = new Array();
 		// // var weight = new Array();
 		// result2 = backpro(i, weight);
 		// var weight = new Array()
 		// weight = result2['weight'];
 		// console.log(result2);
-// *********************************************************
+		// *********************************************************
 		var biases = {"b1": 0.35, "b2":0.60}
 		var hInput = {"h1": 0, "h2": 0}
 		var hOutput = {"h1": 0, "h2": 0}
@@ -55,8 +66,8 @@ router.post('/', function(req, res) {
 		// var hOutput = new Array()
 		// var result = {'weight': weight, 'output': oOutput }
 		// forwardpass
-		console.log(weight);
-		console.log(input);
+		// console.log(weight);
+		// console.log(input);
 		hInput['h1']= weight['w1']*input['i1']+ weight['w2']*input['i2']+ biases['b1']*1
 		hInput['h2'] = weight['w3']*input['i1']+ weight['w4']*input['i2']+ biases['b1']*1
 		hOutput['h1'] = 1/(1 + Math.exp(-hInput['h1']))
@@ -114,8 +125,9 @@ router.post('/', function(req, res) {
 		result['output'] = oOutput;
 		result['target_output'] = output;
 		result['i'] = i+1;
-// *********************************************************
-		if ((i+1)%1000 == 0 || i ==0)
+		// *********************************************************
+
+		if ((i+1)%x == 0 || i ==0)
 		{
 			tempdata1.push(result);
 		}
