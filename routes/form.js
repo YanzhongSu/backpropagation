@@ -54,7 +54,7 @@ router.post('/', function(req, res) {
 	// for (var i = tempdata1.length - 1; i >= 0; i--) {
 	// 	console.log(tempdata1);
 	// };
-	res.render('user', { title: input,title1: output, data: tempdata1});
+	res.render('user', { title: 'Back Propogation', input: input,output: output, data: tempdata1});
   // res.redirect('users');
 });
 
